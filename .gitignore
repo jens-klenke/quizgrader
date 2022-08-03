@@ -6,3 +6,8 @@ doc
 .Ruserdata
 /doc/
 /Meta/
+
+
+# History files
+.Rhistory
+.Rapp.history

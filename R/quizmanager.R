@@ -33,6 +33,7 @@ quizmanager <- function(courselocation = NULL) {
     appDir <- system.file( "apps", package = "quizgrader") #get directory for main menu app
     appFile <- shinyAppFile(file.path(appDir,"quizmanager_app.R"))
     shiny::runApp(appDir = appFile) #run quizmanager app
+    # problems in the App! probably in the tag menu of the UI
 
     print('*************************************************')
     print('Exiting the quizmanager main menu.')
