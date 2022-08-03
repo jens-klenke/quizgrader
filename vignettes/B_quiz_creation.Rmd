@@ -14,6 +14,7 @@ vignette: >
 
 
 ```{r setup, include = FALSE}
+options(rmarkdown.html_vignette.check_title = FALSE)
 pkg = 'quizgrader' #so we can easily switch names
 library(pkg, character.only = TRUE)
 ```
@@ -142,9 +143,8 @@ The question text. You can use basic formatting, e.g. line breaks and such. Fanc
 
 Provide additional instructions to the students, e.g. instructions regarding rounding, entering an integer, etc.
 
----
+
 **The columns just described will be part of the files that are generated for the students. An empty `Answer` column is also incuded. All other columns described next exist only in your complete solution files and are not included in the files given to the students.**  
----
 
 
 #### Answer
@@ -178,6 +178,7 @@ _When to  use `Fuzzy_Integer` or `Integer`:_ If you know the answer is an intege
 
 
 _A note on answer types: I implemented those that I use for my own teaching. If you have others that you want/need, please let me know. Most of them should not be too hard to implement and I'd be happy to do so (if reasonably easy to do)._
+
 
 
 #### Comment
@@ -295,5 +296,4 @@ Steps 1 and 2 above are self-explanatory. The app deployment requires more infor
 Each of those approaches are described in the different tutorials.
 
 There are also a tutorials [explaining how to analyze quizzes]() and [how to update quizzes or the class list once students have started submitting]().
-
 
