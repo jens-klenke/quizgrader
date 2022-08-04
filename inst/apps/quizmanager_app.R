@@ -172,9 +172,6 @@ server <- function(input, output, session) {
   }) #end generate_course_summary code block
 
 
-
-
-
 #---------------------------------------------------------------
 # Roster/Student List management
 #---------------------------------------------------------------
@@ -234,8 +231,6 @@ server <- function(input, output, session) {
 
     showModal(modalDialog(msg, easyClose = FALSE))
   })
-
-
 
   #---------------------------------------------------------------
   # Additional/Optional Grade List management
@@ -485,23 +480,22 @@ server <- function(input, output, session) {
   ################################################################################################
   #create the student and quiz UI elements
   ################################################################################################
+######### ---> Problem
 
-  observeEvent(input$topmenu == "analyzecourse",
-               {
-
-                 ret <- quizgrader::summarize_course(courselocation)
-
-                 student_var <- ret$studentIDs
-                 quiz_var <- ret$quizdf$QuizID
-
-                 output$student_selector = renderUI({
-                   shinyWidgets::pickerInput("student_selector", "Select Student", student_var, multiple = FALSE, options = list(`actions-box` = TRUE), selected = NULL )
-                 })
-                 output$quiz_selector = renderUI({
-                   shinyWidgets::pickerInput("quiz_selector", "Select Quiz", quiz_var, multiple = FALSE, options = list(`actions-box` = TRUE), selected = NULL )
-                 })
-               })
-
+#  observeEvent(input$topmenu == "analyzecourse",{
+#
+#                 ret <- quizgrader::summarize_course(courselocation)
+#
+#                 student_var <- ret$studentIDs
+#                 quiz_var <- ret$quizdf$QuizID
+#
+#                 output$student_selector = renderUI({
+#                   shinyWidgets::pickerInput("student_selector", "Select Student", student_var, multiple = FALSE, options = list(`actions-box` = TRUE), selected = NULL )
+#                 })
+#                 output$quiz_selector = renderUI({
+#                   shinyWidgets::pickerInput("quiz_selector", "Select Quiz", quiz_var, multiple = FALSE, options = list(`actions-box` = TRUE), selected = NULL )
+#                 })
+#               })
 
 
   #######################################################
@@ -583,6 +577,8 @@ server <- function(input, output, session) {
 
   #######################################################
   #Exit quizmanager menu
+  #######################################################
+
   observeEvent(input$Exit, {
     stopApp('Exit')
   })
@@ -600,8 +596,8 @@ server <- function(input, output, session) {
 #quiz manager app
 ui <- fluidPage(
   shinyjs::useShinyjs(),  # Set up shinyjs
-  #tags$head(includeHTML(("google-analytics.html"))), #this is only needed for Google analytics when deployed as app to the UGA server. Should not affect R package use.
-  includeCSS("quizgrader.css"),
+#  tags$head(includeHTML(("google-analytics.html"))), #this is only needed for Google analytics when deployed as app to the UGA server. Should not affect R package use.
+  includeCSS(here::here("inst/apps/quizgrader.css")),
   tags$div(id = "shinyheadertitle", "quizgrader - automated grading and analysis of quizzes"),
   tags$div(id = "infotext", paste0('This is ', packagename,  ' version ',utils::packageVersion(packagename),' last updated ', utils::packageDescription(packagename)$Date,'.')),
   tags$div(id = "infotext", "Written and maintained by", a("Andreas Handel", href="https://www.andreashandel.com", target="_blank"), "with many contributions from", a("others.",  href="https://github.com/andreashandel/quizgrader#contributors", target="_blank")),
@@ -690,7 +686,7 @@ ui <- fluidPage(
                             ),
                      class = "mainmenurow"
                      ) #close fluidRow structure for input
-            ), #close NavBarPage
+            )  , #close NavBarPage
 
 
 
@@ -705,7 +701,6 @@ ui <- fluidPage(
              align = "center", style="font-size:small") #end paragraph
   ) #end taglist
 ) #end fluidpage and UI part of app
-
 
 
 
